@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/pi4j-core-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/pi4j-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/slf4j-simple.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/pi4j-plugin-raspberrypi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/pi4j-library-pigpio.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/slf4j-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/pi4j-plugin-pigpio.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dispositivo-pi4jv2/lib/pi4j-core-javadoc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

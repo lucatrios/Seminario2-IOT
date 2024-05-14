@@ -1,0 +1,30 @@
+{
+    // Utilitzeu IntelliSense per aprendre sobre els atributs possibles.
+    // Passeu el cursor per sobre per veure les descripcions dels atributs existents.
+    // Per a més informació, visiteu: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Dispositivo",
+            "request": "launch",
+            "mainClass": "dispositivo.iniciador.DispositivoIniciador",
+            "args": [
+                "ttmi050",
+                "ttmi050.iot.upv.es",
+                8182,
+                "tcp://mqttserver:1883"]
+        },
+        {
+            "type": "java",
+            "name": "DispositivoPi4Jv2",
+            "request": "launch",
+            "mainClass": "dispositivo.pi4j2.iniciador.DispositivoIniciadorPi4Jv2",
+            "args": [
+                "ttmi050",
+                "ttmi050.iot.upv.es",
+                8182,
+                "tcp://mqttserver:1883"]
+        }
+    ]
+}

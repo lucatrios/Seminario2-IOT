@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "dispositivo/src",
+        "dispositivo-pi4jv2/src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "**/lib/**/*.jar"
+    ],
+    "java.dependency.packagePresentation": "hierarchical"
+}
