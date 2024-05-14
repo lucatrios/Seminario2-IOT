@@ -10,10 +10,10 @@
             "request": "launch",
             "mainClass": "dispositivo.iniciador.DispositivoIniciador",
             "args": [
-                "ttmi050",
-                "ttmi050.iot.upv.es",
+                "ttmi054",
+                "ttmi054.iot.upv.es",
                 8182,
-                "tcp://mqttserver:1883"]
+                "tcp://tambori.dsic.upv.es:1883"]
         },
         {
             "type": "java",
@@ -21,8 +21,8 @@
             "request": "launch",
             "mainClass": "dispositivo.pi4j2.iniciador.DispositivoIniciadorPi4Jv2",
             "args": [
-                "ttmi050",
-                "ttmi050.iot.upv.es",
+                "ttmi054",
+                "ttmi054.iot.upv.es",
                 8182,
                 "tcp://mqttserver:1883"]
         }

@@ -112,4 +112,9 @@ public class Dispositivo implements IDispositivo {
 		this.habilitado = false;
 		return this;
 	}
+
+	@Override
+	public Boolean getHabilitado() {
+		return habilitado;
+	}
 }

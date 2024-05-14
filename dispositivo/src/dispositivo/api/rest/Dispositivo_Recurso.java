@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import dispositivo.interfaces.IFuncion;
+import dispositivo.utils.MySimpleLogger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +30,7 @@ public class Dispositivo_Recurso extends Recurso {
 		
 		try {
 			jsonResult.put("id", dispositivo.getId());
-			jsonResult.put("habilitado", true);
+			jsonResult.put("habilitado", dispositivo.getHabilitado());
 			if ( dispositivo.getFunciones() != null ) {
 				JSONArray arrayFunciones = new JSONArray();
 				Iterator funcIterator = dispositivo.getFunciones().iterator();
@@ -85,6 +86,11 @@ public class Dispositivo_Recurso extends Recurso {
 		try {
 			payload = new JSONObject(entity.getText());
 			String action = payload.getString("accion");
+			if("habilita".equals(action)){
+				d.habilita();
+			} else if ("deshabilita".equals(action)) {
+				d.deshabilita();
+			}
 			
 
 		} catch (JSONException | IOException e) {
