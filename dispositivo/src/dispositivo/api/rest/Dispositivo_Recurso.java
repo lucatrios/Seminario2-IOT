@@ -86,13 +86,14 @@ public class Dispositivo_Recurso extends Recurso {
 		try {
 			payload = new JSONObject(entity.getText());
 			String action = payload.getString("accion");
-			if("habilita".equals(action)){
-				d.habilita();
-			} else if ("deshabilita".equals(action)) {
-				d.deshabilita();
+			switch(action){
+				case "habilita":
+					d.habilita();
+					break;
+				case "deshabilita":
+					d.deshabilita();
+					break;
 			}
-			
-
 		} catch (JSONException | IOException e) {
 			this.generateResponseWithErrorCode(Status.CLIENT_ERROR_BAD_REQUEST);
 		}
