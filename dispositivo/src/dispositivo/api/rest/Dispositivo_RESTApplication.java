@@ -41,6 +41,8 @@ public class Dispositivo_RESTApplication extends Application {
         MySimpleLogger.trace(this.loggerId, "Registrada ruta " + Funcion_Recurso.RUTA + " en api REST");
         router.attach(Dispositivo_Recurso.RUTA, Dispositivo_Recurso.class);
         MySimpleLogger.trace(this.loggerId, "Registrada ruta " + Dispositivo_Recurso.RUTA + " en api REST");
+		router.attach(Habilita_Recurso.RUTA, Dispositivo_Recurso.class);
+		MySimpleLogger.trace(this.loggerId, "Registrada ruta " + Dispositivo_Recurso.RUTA + " en api REST");
 
         return router;
     }

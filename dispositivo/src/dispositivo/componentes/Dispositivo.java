@@ -104,10 +104,12 @@ public class Dispositivo implements IDispositivo {
 	@Override
 	public IDispositivo habilita() {
 		this.habilitado = true;
+		return this;
 	}
 
 	@Override
 	public IDispositivo deshabilita() {
 		this.habilitado = false;
+		return this;
 	}
 }
