@@ -29,6 +29,7 @@ public class Funcion_Recurso extends Recurso {
 		JSONObject jsonResult = new JSONObject();
 		try {
 			jsonResult.put("id", f.getId());
+			jsonResult.put("estado", f.getStatus());
 		} catch (JSONException e) {
 		}
 		return jsonResult;

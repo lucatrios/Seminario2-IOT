@@ -2,8 +2,10 @@ package dispositivo.api.rest;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
+import dispositivo.interfaces.IFuncion;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,9 +29,17 @@ public class Dispositivo_Recurso extends Recurso {
 		
 		try {
 			jsonResult.put("id", dispositivo.getId());
+			jsonResult.put("habilitado", true);
 			if ( dispositivo.getFunciones() != null ) {
 				JSONArray arrayFunciones = new JSONArray();
-
+				Iterator funcIterator = dispositivo.getFunciones().iterator();
+				while(funcIterator.hasNext()){
+					JSONObject jsonObject = new JSONObject();
+					IFuncion func = (IFuncion) funcIterator.next();
+					jsonObject.put("id", func.getId());
+					jsonObject.put("estado", func.getStatus());
+					arrayFunciones.put(jsonObject);
+				}
 				jsonResult.put("funciones", arrayFunciones);
 			}
 
