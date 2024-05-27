@@ -104,8 +104,6 @@ public class Dispositivo_APIMQTT implements MqttCallback {
             handleFunction(topic, payload);
         } else if (("dispositivo/" + dispositivo.getId() + "/comandos").equals(topic)) {
             handleHabilitation(topic, payload);
-        } else if (topic.contains("info")) {
-
         }
     }
 
@@ -199,7 +197,7 @@ public class Dispositivo_APIMQTT implements MqttCallback {
 
         for (IFuncion f : this.dispositivo.getFunciones()) {
             this.subscribe(this.calculateCommandTopic(f));
-            this.subscribe(this.calculateInfoTopic(f));
+//            this.subscribe(this.calculateInfoTopic(f));
         }
 
 
@@ -218,10 +216,6 @@ public class Dispositivo_APIMQTT implements MqttCallback {
 
     protected String calculateCommandTopic(IFuncion f) {
         return Configuracion.TOPIC_BASE + "dispositivo/" + dispositivo.getId() + "/funcion/" + f.getId() + "/comandos";
-    }
-
-    protected String calculateInfoTopic(IFuncion f) {
-        return Configuracion.TOPIC_BASE + "dispositivo/" + dispositivo.getId() + "/funcion/" + f.getId() + "/info";
     }
 
     protected String habilitationTopic() {

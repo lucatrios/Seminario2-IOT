@@ -130,7 +130,7 @@ public class PublishInfo_APIMQTT implements MqttCallback{
             this.connect();
         }
 
-        MqttTopic topic = myClient.getTopic(Configuracion.TOPIC_BASE + "dispositivo/" + dispositivoId + "/funcion/" + funcion.getId() + "/info");
+        MqttTopic topic = myClient.getTopic(calculateInfoTopic(funcion));
 
 
         JSONObject pubMsg = new JSONObject();
@@ -161,6 +161,10 @@ public class PublishInfo_APIMQTT implements MqttCallback{
             e.printStackTrace();
         }
 
+    }
+
+    protected String calculateInfoTopic(IFuncion f) {
+        return Configuracion.TOPIC_BASE + "dispositivo/" + dispositivoId + "/funcion/" + f.getId() + "/info";
     }
 
 }
