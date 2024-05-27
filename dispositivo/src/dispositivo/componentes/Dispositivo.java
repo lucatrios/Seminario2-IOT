@@ -14,7 +14,7 @@ import dispositivo.interfaces.IFuncion;
 public class Dispositivo implements IDispositivo {
 	
 	protected String deviceId = null;
-	protected Boolean habilitado = false;
+	protected Boolean habilitado = true;
 	protected Map<String, IFuncion> functions = null;
 	protected Dispositivo_RegistradorMQTT registrador = null;
 	protected Dispositivo_APIMQTT apiFuncionesMQTT = null;

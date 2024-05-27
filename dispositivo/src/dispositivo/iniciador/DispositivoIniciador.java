@@ -26,7 +26,7 @@ public class DispositivoIniciador {
 		// Añadimos funciones al dispositivo
 		IFuncion f1 = Funcion.build("f1", FuncionStatus.OFF, d);
 		d.addFuncion(f1);
-		
+
 		IFuncion f2 = Funcion.build("f2", FuncionStatus.OFF, d);
 		d.addFuncion(f2);
 

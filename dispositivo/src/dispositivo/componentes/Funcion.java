@@ -41,7 +41,6 @@ public class Funcion implements IFuncion {
         MySimpleLogger.info(this.loggerId, "==> Encender");
         if (dispositivo.getHabilitado()) {
             this.setStatus(FuncionStatus.ON);
-            dispositivo.publishFunctionInfo(this);
         } else {
             MySimpleLogger.warn(this.loggerId, "El dispositivo esta deshabilitado, no se permite la modifica del estado de sus funciones");
         }
@@ -54,7 +53,6 @@ public class Funcion implements IFuncion {
         MySimpleLogger.info(this.loggerId, "==> Apagar");
         if (dispositivo.getHabilitado()) {
             this.setStatus(FuncionStatus.OFF);
-            dispositivo.publishFunctionInfo(this);
         } else {
             MySimpleLogger.warn(this.loggerId, "El dispositivo esta deshabilitado, no se permite la modifica del estado de sus funciones");
         }
@@ -67,7 +65,6 @@ public class Funcion implements IFuncion {
         MySimpleLogger.info(this.loggerId, "==> Parpadear");
         if (dispositivo.getHabilitado()) {
             this.setStatus(FuncionStatus.BLINK);
-            dispositivo.publishFunctionInfo(this);
         } else {
 			MySimpleLogger.warn(this.loggerId, "El dispositivo esta deshabilitado, no se permite la modifica del estado de sus funciones");
         }
@@ -100,8 +97,8 @@ public class Funcion implements IFuncion {
     }
 
     protected IFuncion setStatus(FuncionStatus status) {
-        dispositivo.publishFunctionInfo(this);
         this.status = status;
+        dispositivo.publishFunctionInfo(this);
         return this;
     }
 

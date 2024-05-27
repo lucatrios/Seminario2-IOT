@@ -134,12 +134,9 @@ public class PublishInfo_APIMQTT implements MqttCallback{
 
 
         JSONObject pubMsg = new JSONObject();
-        JSONObject funcionMsg = new JSONObject();
         try {
-            pubMsg.put("dispositivo", dispositivoId);
-            funcionMsg.put("id", funcion.getId());
-            funcionMsg.put("estado", funcion.getStatus());
-            pubMsg.put("funcion", funcionMsg);
+            pubMsg.put("id", funcion.getId());
+            pubMsg.put("estado", funcion.getStatus());
         } catch (JSONException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -163,15 +160,6 @@ public class PublishInfo_APIMQTT implements MqttCallback{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-
-
-    public void desregistrar() {
-
-        // ToDo
-
 
     }
 
