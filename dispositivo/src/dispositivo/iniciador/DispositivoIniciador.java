@@ -24,13 +24,13 @@ public class DispositivoIniciador {
 		IDispositivo d = Dispositivo.build(deviceId, deviceIP, Integer.valueOf(port), mqttBroker);
 		
 		// Añadimos funciones al dispositivo
-		IFuncion f1 = Funcion.build("f1", FuncionStatus.OFF);
+		IFuncion f1 = Funcion.build("f1", FuncionStatus.OFF, d);
 		d.addFuncion(f1);
 		
-		IFuncion f2 = Funcion.build("f2", FuncionStatus.OFF);
+		IFuncion f2 = Funcion.build("f2", FuncionStatus.OFF, d);
 		d.addFuncion(f2);
 
-		IFuncion f3 = Funcion.build("f3", FuncionStatus.BLINK);
+		IFuncion f3 = Funcion.build("f3", FuncionStatus.BLINK, d);
 		d.addFuncion(f3);
 
 		// Arrancamos el dispositivo

@@ -1,13 +1,9 @@
 package dispositivo.api.mqtt;
 
+import java.util.Map;
 import java.util.UUID;
 
-import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
-import org.eclipse.paho.client.mqttv3.MqttCallback;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence;
 
 import dispositivo.interfaces.Configuracion;
@@ -55,7 +51,6 @@ public class Dispositivo_APIMQTT implements MqttCallback {
         //System.out.println("Pub complete" + new String(token.getMessage().getPayload()));
     }
 
-
     public void handleFunction(String topic, String payload) throws JSONException {
         String[] topicNiveles = topic.split("/");
         String funcionId = topicNiveles[topicNiveles.length - 2];
@@ -66,7 +61,7 @@ public class Dispositivo_APIMQTT implements MqttCallback {
             return;
         }
         // Ejecutamos acción indicada en campo 'accion' del JSON recibido
-		JSONObject JSONPayload = new JSONObject(payload);
+        JSONObject JSONPayload = new JSONObject(payload);
         String action = (String) JSONPayload.get("accion");
 
         if (action.equalsIgnoreCase("encender"))
@@ -82,8 +77,8 @@ public class Dispositivo_APIMQTT implements MqttCallback {
     public void handleHabilitation(String topic, String payload) throws JSONException {
 
         // Ejecutamos acción indicada en campo 'accion' del JSON recibido
-		JSONObject JSONPayload = new JSONObject(payload);
-		String action = (String) JSONPayload.get("accion");
+        JSONObject JSONPayload = new JSONObject(payload);
+        String action = (String) JSONPayload.get("accion");
 
         if (action.equalsIgnoreCase("habilitar")) {
             MySimpleLogger.info(this.loggerId, "==> Habilitar");
@@ -109,6 +104,8 @@ public class Dispositivo_APIMQTT implements MqttCallback {
             handleFunction(topic, payload);
         } else if (("dispositivo/" + dispositivo.getId() + "/comandos").equals(topic)) {
             handleHabilitation(topic, payload);
+        } else if (topic.contains("info")) {
+
         }
     }
 
@@ -200,8 +197,11 @@ public class Dispositivo_APIMQTT implements MqttCallback {
         if (this.dispositivo == null)
             return;
 
-        for (IFuncion f : this.dispositivo.getFunciones())
+        for (IFuncion f : this.dispositivo.getFunciones()) {
             this.subscribe(this.calculateCommandTopic(f));
+            this.subscribe(this.calculateInfoTopic(f));
+        }
+
 
         this.subscribe(this.habilitationTopic());
 

@@ -1,6 +1,7 @@
 package dispositivo.componentes;
 
 import dispositivo.interfaces.FuncionStatus;
+import dispositivo.interfaces.IDispositivo;
 import dispositivo.interfaces.IFuncion;
 import dispositivo.utils.MySimpleLogger;
 
@@ -10,6 +11,7 @@ public class Funcion implements IFuncion {
 
 	protected FuncionStatus initialStatus = null;
 	protected FuncionStatus status = null;
+	protected static Dispositivo dispositivo = null;
 	
 	private String loggerId = null;
 	
@@ -17,7 +19,8 @@ public class Funcion implements IFuncion {
 		return new Funcion(id, FuncionStatus.OFF);
 	}
 	
-	public static Funcion build(String id, FuncionStatus initialStatus) {
+	public static Funcion build(String id, FuncionStatus initialStatus, IDispositivo d) {
+		dispositivo = (Dispositivo) d;
 		return new Funcion(id, initialStatus);
 	}
 
@@ -37,6 +40,7 @@ public class Funcion implements IFuncion {
 
 		MySimpleLogger.info(this.loggerId, "==> Encender");
 		this.setStatus(FuncionStatus.ON);
+		dispositivo.publishInfoApiMQTT.publishFunctionInfo(this);
 		return this;
 	}
 
@@ -53,6 +57,7 @@ public class Funcion implements IFuncion {
 
 		MySimpleLogger.info(this.loggerId, "==> Parpadear");
 		this.setStatus(FuncionStatus.BLINK);
+		dispositivo.publishInfoApiMQTT.publishFunctionInfo(this);
 		return this;
 	}
 	
@@ -82,6 +87,7 @@ public class Funcion implements IFuncion {
 	}
 	
 	protected IFuncion setStatus(FuncionStatus status) {
+		dispositivo.publishInfoApiMQTT.publishFunctionInfo(this);
 		this.status = status;
 		return this;
 	}

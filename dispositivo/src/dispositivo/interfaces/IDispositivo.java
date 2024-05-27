@@ -1,6 +1,7 @@
 package dispositivo.interfaces;
 
 import java.util.Collection;
+import java.util.Map;
 
 public interface IDispositivo {
 
@@ -14,5 +15,4 @@ public interface IDispositivo {
 	public IFuncion getFuncion(String funcionId);
 	public Collection<IFuncion> getFunciones();
 	public Boolean getHabilitado();
-		
 }

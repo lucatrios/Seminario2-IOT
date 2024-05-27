@@ -6,6 +6,7 @@ import java.util.Map;
 
 import dispositivo.api.iot.infraestructure.Dispositivo_RegistradorMQTT;
 import dispositivo.api.mqtt.Dispositivo_APIMQTT;
+import dispositivo.api.mqtt.PublishInfo_APIMQTT;
 import dispositivo.api.rest.Dispositivo_APIREST;
 import dispositivo.interfaces.IDispositivo;
 import dispositivo.interfaces.IFuncion;
@@ -18,12 +19,14 @@ public class Dispositivo implements IDispositivo {
 	protected Dispositivo_RegistradorMQTT registrador = null;
 	protected Dispositivo_APIMQTT apiFuncionesMQTT = null;
 	protected Dispositivo_APIREST apiFuncionesREST = null;
+	protected PublishInfo_APIMQTT publishInfoApiMQTT = null;
 
 	public static Dispositivo build(String deviceId, String ip, int port, String mqttBrokerURL) {
 		Dispositivo dispositivo = new Dispositivo(deviceId);
 		dispositivo.registrador = Dispositivo_RegistradorMQTT.build(deviceId, ip, mqttBrokerURL);
 		dispositivo.apiFuncionesMQTT = Dispositivo_APIMQTT.build(dispositivo, mqttBrokerURL);
 		dispositivo.apiFuncionesREST = Dispositivo_APIREST.build(dispositivo, port);
+		dispositivo.publishInfoApiMQTT = PublishInfo_APIMQTT.build(deviceId, ip, mqttBrokerURL);
 		return dispositivo;
 	}
 
@@ -108,4 +111,5 @@ public class Dispositivo implements IDispositivo {
 	public Boolean getHabilitado() {
 		return habilitado;
 	}
+
 }
