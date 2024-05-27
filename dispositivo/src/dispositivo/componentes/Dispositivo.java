@@ -112,4 +112,8 @@ public class Dispositivo implements IDispositivo {
 		return habilitado;
 	}
 
+	@Override
+	public void publishFunctionInfo(IFuncion f) {
+		this.publishInfoApiMQTT.publishFunctionInfo(f);
+	}
 }

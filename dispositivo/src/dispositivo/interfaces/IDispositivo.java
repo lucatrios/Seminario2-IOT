@@ -15,4 +15,5 @@ public interface IDispositivo {
 	public IFuncion getFuncion(String funcionId);
 	public Collection<IFuncion> getFunciones();
 	public Boolean getHabilitado();
+	public void publishFunctionInfo(IFuncion f);
 }
