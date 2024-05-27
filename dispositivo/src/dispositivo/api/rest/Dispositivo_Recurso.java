@@ -87,12 +87,14 @@ public class Dispositivo_Recurso extends Recurso {
 			payload = new JSONObject(entity.getText());
 			String action = payload.getString("accion");
 			switch(action){
-				case "habilita":
+				case "habilitar":
 					d.habilita();
 					break;
-				case "deshabilita":
+				case "deshabilitar":
 					d.deshabilita();
 					break;
+				default:
+					MySimpleLogger.info(d.getId() + "-RegisterService", "Acción " + payload + " no reconocida. Sólo admitidas: habilitar, deshabilitar");
 			}
 		} catch (JSONException | IOException e) {
 			this.generateResponseWithErrorCode(Status.CLIENT_ERROR_BAD_REQUEST);
