@@ -38,6 +38,7 @@ public class Funcion implements IFuncion {
     @Override
     public IFuncion encender() {
 
+        MySimpleLogger.info(this.loggerId, "==> Encender");
         if (dispositivo.getHabilitado()) {
             this.setStatus(FuncionStatus.ON);
             dispositivo.publishFunctionInfo(this);
@@ -99,7 +100,7 @@ public class Funcion implements IFuncion {
     }
 
     protected IFuncion setStatus(FuncionStatus status) {
-        dispositivo.publishInfoApiMQTT.publishFunctionInfo(this);
+        dispositivo.publishFunctionInfo(this);
         this.status = status;
         return this;
     }
