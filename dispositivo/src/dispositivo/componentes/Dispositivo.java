@@ -18,15 +18,6 @@ public class Dispositivo implements IDispositivo {
 	protected Dispositivo_RegistradorMQTT registrador = null;
 	protected Dispositivo_APIMQTT apiFuncionesMQTT = null;
 	protected Dispositivo_APIREST apiFuncionesREST = null;
-	
-	
-	public static Dispositivo build(String deviceId, String ip, String mqttBrokerURL) {
-		Dispositivo dispositivo = new Dispositivo(deviceId);
-		dispositivo.registrador = Dispositivo_RegistradorMQTT.build(deviceId, ip, mqttBrokerURL);
-		dispositivo.apiFuncionesMQTT = Dispositivo_APIMQTT.build(dispositivo, mqttBrokerURL);
-		dispositivo.apiFuncionesREST = Dispositivo_APIREST.build(dispositivo);
-		return dispositivo;
-	}
 
 	public static Dispositivo build(String deviceId, String ip, int port, String mqttBrokerURL) {
 		Dispositivo dispositivo = new Dispositivo(deviceId);
